@@ -471,7 +471,7 @@ func TestFp2Serialization(t *testing.T) {
 	field := newFp2()
 	for i := 0; i < fuz; i++ {
 		a, _ := new(fe2).rand(rand.Reader)
-		b, err := field.fromBytes(field.toBytes(a))
+		b, err := field.FromBytes(field.toBytes(a))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -696,7 +696,7 @@ func TestFp2MultiplicationPropertiesAssigned(t *testing.T) {
 	field := newFp2()
 	for i := 0; i < fuz; i++ {
 		a, _ := new(fe2).rand(rand.Reader)
-		zero, one := new(fe2).zero(), new(fe2).one()
+		zero, one := new(fe2).zero(), new(fe2).One()
 		field.mulAssign(a, zero)
 		if !a.equal(zero) {
 			t.Fatal("a * 0 == 0")
@@ -825,7 +825,7 @@ func TestFp2NonResidue(t *testing.T) {
 	if !field.isQuadraticNonResidue(nonResidue2) {
 		t.Fatal("element is quadratic non residue, 1")
 	}
-	if field.isQuadraticNonResidue(new(fe2).one()) {
+	if field.isQuadraticNonResidue(new(fe2).One()) {
 		t.Fatal("one is not quadratic non residue")
 	}
 	if !field.isQuadraticNonResidue(new(fe2).zero()) {
@@ -834,7 +834,7 @@ func TestFp2NonResidue(t *testing.T) {
 	for i := 0; i < fuz; i++ {
 		a, _ := new(fe2).rand(rand.Reader)
 		field.squareAssign(a)
-		if field.isQuadraticNonResidue(new(fe2).one()) {
+		if field.isQuadraticNonResidue(new(fe2).One()) {
 			t.Fatal("element is not quadratic non residue")
 		}
 	}

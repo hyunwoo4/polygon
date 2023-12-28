@@ -42,7 +42,7 @@ func newFp2() *fp2 {
 	return &fp2{t}
 }
 
-func (e *fp2) fromBytes(in []byte) (*fe2, error) {
+func (e *fp2) FromBytes(in []byte) (*fe2, error) {
 	if len(in) != 96 {
 		return nil, errors.New("length of input string should be 96 bytes")
 	}
@@ -73,7 +73,7 @@ func (e *fp2) zero() *fe2 {
 }
 
 func (e *fp2) one() *fe2 {
-	return new(fe2).one()
+	return new(fe2).One()
 }
 
 func (e *fp2) add(c, a, b *fe2) {

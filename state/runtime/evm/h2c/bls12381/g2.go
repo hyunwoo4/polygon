@@ -38,7 +38,7 @@ func (p *PointG2) Set(p2 *PointG2) *PointG2 {
 // Zero returns G2 point in point at infinity representation
 func (p *PointG2) Zero() *PointG2 {
 	p[0].zero()
-	p[1].one()
+	p[1].One()
 	p[2].zero()
 	return p
 }
@@ -80,15 +80,15 @@ func (g *G2) Q() *big.Int {
 }
 
 func (g *G2) fromBytesUnchecked(in []byte) (*PointG2, error) {
-	p0, err := g.f.fromBytes(in[:96])
+	p0, err := g.f.FromBytes(in[:96])
 	if err != nil {
 		return nil, err
 	}
-	p1, err := g.f.fromBytes(in[96:])
+	p1, err := g.f.FromBytes(in[96:])
 	if err != nil {
 		return nil, err
 	}
-	p2 := new(fe2).one()
+	p2 := new(fe2).One()
 	return &PointG2{*p0, *p1, *p2}, nil
 }
 
@@ -101,11 +101,11 @@ func (g *G2) FromBytes(in []byte) (*PointG2, error) {
 	if len(in) != 192 {
 		return nil, errors.New("input string should be equal or larger than 192")
 	}
-	p0, err := g.f.fromBytes(in[:96])
+	p0, err := g.f.FromBytes(in[:96])
 	if err != nil {
 		return nil, err
 	}
-	p1, err := g.f.fromBytes(in[96:])
+	p1, err := g.f.FromBytes(in[96:])
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +113,7 @@ func (g *G2) FromBytes(in []byte) (*PointG2, error) {
 	if p0.isZero() && p1.isZero() {
 		return g.Zero(), nil
 	}
-	p2 := new(fe2).one()
+	p2 := new(fe2).One()
 	p := &PointG2{*p0, *p1, *p2}
 	if !g.IsOnCurve(p) {
 		return nil, errors.New("point is not on curve")
@@ -260,7 +260,7 @@ func (g *G2) Affine(p *PointG2) *PointG2 {
 		g.f.mul(&p[0], &p[0], t[1])
 		g.f.mul(t[0], t[0], t[1])
 		g.f.mul(&p[1], &p[1], t[0])
-		p[2].one()
+		p[2].One()
 	}
 	return p
 }
@@ -442,14 +442,18 @@ func (g *G2) MultiExp(r *PointG2, points []*PointG2, powers []*big.Int) (*PointG
 // Input byte slice should be a valid field element, otherwise an error is returned.
 func (g *G2) MapToCurve(in []byte) (*PointG2, error) {
 	fp2 := g.f
-	u, err := fp2.fromBytes(in)
+	u, err := fp2.FromBytes(in)
 	if err != nil {
 		return nil, err
 	}
-	x, y := swuMapG2(fp2, u)
-	isogenyMapG2(fp2, x, y)
-	z := new(fe2).one()
+	x, y := SwuMapG2(fp2, u)
+	IsogenyMapG2(fp2, x, y)
+	z := new(fe2).One()
 	q := &PointG2{*x, *y, *z}
 	g.ClearCofactor(q)
 	return g.Affine(q), nil
+}
+
+func (g *G2) GetF() *fp2 {
+	return g.f
 }

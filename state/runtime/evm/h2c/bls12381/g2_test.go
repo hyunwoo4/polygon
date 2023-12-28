@@ -61,7 +61,7 @@ func TestG2IsOnCurve(t *testing.T) {
 	if !g.IsOnCurve(zero) {
 		t.Fatal("zero must be on curve")
 	}
-	one := new(fe2).one()
+	one := new(fe2).One()
 	p := &PointG2{*one, *one, *one}
 	if g.IsOnCurve(p) {
 		t.Fatal("(1, 1) is not on curve")

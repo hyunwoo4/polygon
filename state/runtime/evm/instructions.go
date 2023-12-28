@@ -7,11 +7,14 @@ import (
 	"math/bits"
 	"sync"
 
+	"polygon-edge/state/runtime/evm/h2c/bls12381"
+
 	"github.com/0xPolygon/polygon-edge/crypto"
 	"github.com/0xPolygon/polygon-edge/helper/common"
 	"github.com/0xPolygon/polygon-edge/helper/keccak"
 	"github.com/0xPolygon/polygon-edge/state/runtime"
 	"github.com/0xPolygon/polygon-edge/types"
+	bl "github.com/hyunwoo4/bls12381/bls12381"
 )
 
 type instruction func(c *state)
@@ -21,6 +24,52 @@ var (
 	one      = big.NewInt(1)
 	wordSize = big.NewInt(32)
 )
+
+type fe [6]uint64
+
+type fp2Temp struct {
+	t [4]*fe
+}
+
+type fp2 struct {
+	fp2Temp
+}
+
+type MyG2 struct {
+	bl.G2
+}
+
+type fe2 [2]fe
+
+/*
+	func (g *MyG2) opMapToCurve(in []byte) (*bl.PointG2, error) {
+		fp2 := new(fp2)
+		u, err := bl.FromBytes(in)
+		if err != nil {
+			return nil, err
+		}
+		x, y := bl.SwuMapG2(fp2, u)
+		bl.IsogenyMapG2(fp2, x, y)
+		z := bl.new(fe2).One()
+		q := &bl.PointG2{*x, *y, *z}
+		g.ClearCofactor(q)
+		return g.Affine(q), nil
+	}
+*/
+
+func (g *bls12381.G2) MapToCurve(in []byte) (*bls12381.PointG2, error) {
+	fp2 := g.f
+	u, err := fp2.FromBytes(in)
+	if err != nil {
+		return nil, err
+	}
+	x, y := bls12381.SwuMapG2(fp2, u)
+	bls12381.IsogenyMapG2(fp2, x, y)
+	z := bls12381.new(fe2).One()
+	q := &bls12381.PointG2{*x, *y, *z}
+	g.ClearCofactor(q)
+	return g.Affine(q), nil
+}
 
 func opAdd(c *state) {
 	a := c.pop()

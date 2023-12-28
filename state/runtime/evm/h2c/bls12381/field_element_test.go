@@ -50,7 +50,7 @@ func TestFieldElementEquality(t *testing.T) {
 	if !zero2.equal(zero2) {
 		t.Fatal("0 == 0")
 	}
-	one2 := new(fe2).one()
+	one2 := new(fe2).One()
 	if !one2.equal(one2) {
 		t.Fatal("1 == 1")
 	}
@@ -133,7 +133,7 @@ func TestFieldElementHelpers(t *testing.T) {
 	if !zero2.isZero() {
 		t.Fatal("'zero' is not zero, 2")
 	}
-	one2 := new(fe2).one()
+	one2 := new(fe2).One()
 	if !one2.isOne() {
 		t.Fatal("'one' is not one, 2")
 	}

@@ -202,7 +202,7 @@ func (e *fe2) zero() *fe2 {
 	return e
 }
 
-func (e *fe2) one() *fe2 {
+func (e *fe2) One() *fe2 {
 	e[0].one()
 	e[1].zero()
 	return e
@@ -256,7 +256,7 @@ func (e *fe6) zero() *fe6 {
 }
 
 func (e *fe6) one() *fe6 {
-	e[0].one()
+	e[0].One()
 	e[1].zero()
 	e[2].zero()
 	return e

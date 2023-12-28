@@ -51,15 +51,15 @@ func (e *fp6) fromBytes(b []byte) (*fe6, error) {
 		return nil, errors.New("input string should be larger than 288 bytes")
 	}
 	fp2 := e.fp2
-	u2, err := fp2.fromBytes(b[:96])
+	u2, err := fp2.FromBytes(b[:96])
 	if err != nil {
 		return nil, err
 	}
-	u1, err := fp2.fromBytes(b[96:192])
+	u1, err := fp2.FromBytes(b[96:192])
 	if err != nil {
 		return nil, err
 	}
-	u0, err := fp2.fromBytes(b[192:])
+	u0, err := fp2.FromBytes(b[192:])
 	if err != nil {
 		return nil, err
 	}

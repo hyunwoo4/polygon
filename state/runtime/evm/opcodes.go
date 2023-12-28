@@ -259,6 +259,9 @@ const (
 
 	// SELFDESTRUCT destroys the contract and sends all funds to addr
 	SELFDESTRUCT = 0xFF
+
+	// MAPTOCURVE maps a point to the curve
+	MAPTOCURVE = 0xFE
 )
 
 var opCodeToString = map[OpCode]string{
@@ -335,6 +338,7 @@ var opCodeToString = map[OpCode]string{
 	SELFDESTRUCT:   "SELFDESTRUCT",
 	CHAINID:        "CHAINID",
 	SELFBALANCE:    "SELFBALANCE",
+	MAPTOCURVE:     "MAPTOCURVE",
 }
 
 func opCodesToString(from, to OpCode, str string) {

@@ -46,7 +46,7 @@ func isogenyMapG1(x, y *fe) {
 }
 
 // isogenyMapG2 applies 11-isogeny map for BLS12-381 G1 defined at draft-irtf-cfrg-hash-to-curve-06.
-func isogenyMapG2(e *fp2, x, y *fe2) {
+func IsogenyMapG2(e *fp2, x, y *fe2) {
 	if e == nil {
 		e = newFp2()
 	}

@@ -66,7 +66,7 @@ func swuMapG1(u *fe) (*fe, *fe) {
 
 // swuMapG2 is implementation of Simplified Shallue-van de Woestijne-Ulas Method
 // defined at draft-irtf-cfrg-hash-to-curve-06.
-func swuMapG2(e *fp2, u *fe2) (*fe2, *fe2) {
+func SwuMapG2(e *fp2, u *fe2) (*fe2, *fe2) {
 	if e == nil {
 		e = newFp2()
 	}
