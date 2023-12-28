@@ -1,4 +1,4 @@
-module github.com/0xPolygon/polygon-edge
+module github.com/hyunwoo4/polygon
 
 go 1.20
 
