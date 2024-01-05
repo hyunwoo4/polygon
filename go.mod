@@ -3,12 +3,11 @@ module github.com/hyunwoo4/polygon
 go 1.20
 
 require (
-	//github.com/hyunwoo4/polygon-edge/helper/bls12381 v1.0.0
 	github.com/btcsuite/btcd v0.22.1
 	github.com/containerd/cgroups v1.1.0 // indirect
 	github.com/elastic/gosigar v0.14.2 // indirect
 	github.com/envoyproxy/protoc-gen-validate v1.0.2
-	github.com/ethereum/go-ethereum v1.13.5
+	github.com/ethereum/go-ethereum v1.10.26
 	github.com/golang/protobuf v1.5.3
 	github.com/google/uuid v1.4.0
 	github.com/gorilla/websocket v1.5.0
@@ -67,10 +66,11 @@ require (
 )
 
 require (
-	github.com/hyunwoo4/bls12381 v1.2.0
+	github.com/0xPolygon/polygon-edge v1.3.2
 	github.com/quasilyte/go-ruleguard v0.4.0
 	github.com/quasilyte/go-ruleguard/dsl v0.3.22
 	github.com/sethvargo/go-retry v0.2.4
+	github.com/supranational/blst v0.3.8-0.20220526154634-513d2456b344
 	golang.org/x/sync v0.4.0
 	google.golang.org/genproto v0.0.0-20230822172742-b8732ec3820d
 	gopkg.in/DataDog/dd-trace-go.v1 v1.54.1
@@ -83,16 +83,16 @@ require (
 	github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.0-devel.0.20230725154044-2549ba9058df // indirect
 	github.com/DataDog/go-libddwaf v1.5.0 // indirect
 	github.com/DataDog/go-tuf v1.0.2-0.5.2 // indirect
-	github.com/bits-and-blooms/bitset v1.7.0 // indirect
-	github.com/consensys/bavard v0.1.13 // indirect
+	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
 	github.com/ebitengine/purego v0.5.0-alpha.1 // indirect
 	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
+	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/google/s2a-go v0.1.5 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.3 // indirect
+	github.com/holiman/uint256 v1.2.0 // indirect
 	github.com/ipfs/boxo v0.8.1 // indirect
 	github.com/libp2p/go-yamux/v4 v4.0.0 // indirect
-	github.com/mmcloughlin/addchain v0.4.0 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.2 // indirect
 	github.com/outcaste-io/ristretto v0.2.3 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
@@ -108,7 +108,6 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20230822172742-b8732ec3820d // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
-	rsc.io/tmplfunc v0.0.3 // indirect
 )
 
 require (
@@ -130,7 +129,7 @@ require (
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
-	github.com/consensys/gnark-crypto v0.12.1 // indirect
+	github.com/consensys/gnark-crypto v0.5.3
 	github.com/containerd/continuity v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
@@ -183,8 +182,6 @@ require (
 	github.com/mikioh/tcpopt v0.0.0-20190314235656-172688c1accc // indirect
 	github.com/minio/sha256-simd v1.0.1 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
-	github.com/moby/term v0.0.0-20220808134915-39b0c02b01ae // indirect
-	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/mr-tron/base58 v1.2.0 // indirect
 	github.com/multiformats/go-base36 v0.2.0 // indirect
 	github.com/multiformats/go-multiaddr-dns v0.3.1 // indirect
@@ -233,6 +230,5 @@ require (
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.128.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	gotest.tools/v3 v3.0.2 // indirect
 	inet.af/netaddr v0.0.0-20230525184311-b8eac61e914a // indirect
 )
