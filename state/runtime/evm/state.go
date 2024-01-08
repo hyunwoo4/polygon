@@ -14,6 +14,12 @@ import (
 	"github.com/0xPolygon/polygon-edge/types"
 )
 
+// 추가코드
+func (c *state) setError(err error) {
+	// 에러 처리
+	c.exit(err)
+}
+
 var statePool = sync.Pool{
 	New: func() interface{} {
 		return new(state)
