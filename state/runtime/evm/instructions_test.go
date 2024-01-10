@@ -48,7 +48,7 @@ func TestG2MapToCurve(t *testing.T) {
 		// 새로운 state 객체 생성
 		c, closeFn := getState()
 		defer closeFn()
-
+		fmt.Printf("v.u : %x\n", v.u)
 		// 입력값을 big.Int로 변환하고 스택에 푸시
 		c.push(new(big.Int).SetBytes(v.u))
 
@@ -62,7 +62,7 @@ func TestG2MapToCurve(t *testing.T) {
 		// }
 
 		// 결과 출력 (선택사항)
-		fmt.Println("Result:", resultBigInt)
+		fmt.Printf("Result: %x\n", resultBigInt)
 
 		// state 객체 반환
 		releaseState(c)

@@ -3,6 +3,7 @@ package bls12381
 import (
 	"bytes"
 	"crypto/rand"
+	"fmt"
 	"math/big"
 	"testing"
 
@@ -249,6 +250,8 @@ func TestG2MapToCurve(t *testing.T) {
 		if err != nil {
 			t.Fatal("map to curve fails", i, err)
 		}
+		fmt.Printf("u : %x\n", v.u)
+		fmt.Printf("g : %x\n", g.ToBytes(p0))
 		if !bytes.Equal(g.ToBytes(p0), v.expected) {
 			t.Fatal("map to curve fails", i)
 		}
