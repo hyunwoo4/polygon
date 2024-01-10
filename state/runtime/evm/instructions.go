@@ -2,7 +2,6 @@ package evm
 
 import (
 	"errors"
-	"fmt"
 	"math/big"
 	"math/bits"
 	"sync"
@@ -47,7 +46,6 @@ func opMapToCurve(c *state) {
 		c.setError(err)
 		return
 	}
-	fmt.Printf("p : %x\n", g.ToBytes(p0))
 
 	// G2 구조체의 결과를 big.Int로 변환
 	byteP0 := ethcommon.Bytes2Hex(g.ToBytes(p0))
