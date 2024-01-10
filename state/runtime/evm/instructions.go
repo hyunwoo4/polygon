@@ -12,6 +12,9 @@ import (
 	"github.com/0xPolygon/polygon-edge/helper/keccak"
 	"github.com/0xPolygon/polygon-edge/state/runtime"
 	"github.com/0xPolygon/polygon-edge/types"
+
+	ethcommon "github.com/ethereum/go-ethereum/common"
+
 	bls12381 "github.com/hyunwoo4/polygon/helper/bls12381"
 )
 
@@ -45,8 +48,10 @@ func opMapToCurve(c *state) {
 		return
 	}
 	fmt.Printf("p : %x\n", g.ToBytes(p0))
-	// G2 구조체의 Q 메소드를 사용하여 결과를 big.Int로 변환
-	resultBigInt := g.Q()
+
+	// G2 구조체의 결과를 big.Int로 변환
+	byteP0 := ethcommon.Bytes2Hex(g.ToBytes(p0))
+	resultBigInt := new(big.Int).SetBytes(ethcommon.FromHex(byteP0))
 
 	c.push(resultBigInt)
 }
