@@ -2,7 +2,6 @@ package evm
 
 import (
 	"errors"
-	"fmt"
 	"math/big"
 	"math/bits"
 	"sync"
@@ -37,9 +36,11 @@ func opMapToCurve(c *state) {
 
 	// big.Int 객체를 바이트 슬라이스로 변환
 	in := inBig.Bytes()
+	if len(in) == 0 {
+		in = make([]byte, 96)
+	}
 	// G2 구조체의 인스턴스 생성
 	g := bls12381.NewG2()
-	fmt.Printf("in : %x\n", in)
 
 	// MapToCurve 메소드 호출 (결과는 사용하지 않음)
 	p0, err := g.MapToCurve(in)
@@ -51,7 +52,6 @@ func opMapToCurve(c *state) {
 
 	// G2 구조체의 결과를 big.Int로 변환
 	byteP0 := ethcommon.Bytes2Hex(g.ToBytes(p0))
-	fmt.Printf("asdsadasd : %x \n", p0)
 	resultBigInt := new(big.Int).SetBytes(ethcommon.FromHex(byteP0))
 
 	c.push(resultBigInt)
